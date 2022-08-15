@@ -1,4 +1,4 @@
-use std::env;
+use std::{env, fs};
 
 fn main() {
     // Collecting the arguments passed to the program
@@ -11,5 +11,10 @@ fn main() {
 
     println!("Searching for {}", query);
     println!("In file {}", file_path);
+
+    let contents = fs::read_to_string(file_path)
+        .expect("Should have been able to read the file");
+
+    println!("With text:\n{contents}");
 }
 
